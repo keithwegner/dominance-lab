@@ -1356,6 +1356,273 @@
       font-size: 0.94rem;
     }
 
+    .commissioner-layout {
+      display: grid;
+      grid-template-columns: minmax(310px, 0.72fr) minmax(0, 1.28fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .commissioner-card {
+      padding: 22px;
+      position: relative;
+      overflow: visible;
+    }
+
+    .commissioner-card::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -140px;
+      top: -140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,107,214,0.20), transparent 70%);
+      pointer-events: none;
+    }
+
+    .commissioner-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .commissioner-controls {
+      display: grid;
+      gap: 18px;
+    }
+
+    .select-row label {
+      display: block;
+      font-weight: 900;
+      font-size: 13px;
+      margin-bottom: 9px;
+    }
+
+    .label-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 0;
+    }
+
+    .help-dot {
+      position: relative;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border: 1px solid rgba(97,243,255,0.48);
+      background: rgba(97,243,255,0.12);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 950;
+      line-height: 1;
+      cursor: help;
+    }
+
+    .help-dot::after {
+      content: attr(data-tip);
+      display: none;
+      position: absolute;
+      left: 0;
+      top: calc(100% + 10px);
+      width: min(300px, 72vw);
+      padding: 12px 13px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(5,7,22,0.96);
+      color: #dfe4ff;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.42);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.45;
+      text-transform: none;
+      letter-spacing: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-4px);
+      transition: opacity 160ms ease, transform 160ms ease;
+      z-index: 40;
+    }
+
+    .help-dot:hover::after, .help-dot:focus::after, .help-dot:focus-visible::after {
+      opacity: 1;
+      transform: none;
+    }
+
+    .help-dot:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .control-tooltip {
+      position: fixed;
+      z-index: 80;
+      width: min(320px, calc(100vw - 32px));
+      padding: 13px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(5,7,22,0.97);
+      color: #dfe4ff;
+      box-shadow: 0 22px 60px rgba(0,0,0,0.48);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.45;
+      pointer-events: none;
+    }
+
+    .control-tooltip[hidden] {
+      display: none;
+    }
+
+    .select-row select {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 16px;
+      background: rgba(5,7,22,0.62);
+      color: var(--text);
+      padding: 12px 13px;
+      font: inherit;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .commissioner-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .copy-status {
+      color: var(--muted);
+      min-height: 22px;
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
+
+    .commissioner-output-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .commissioner-output-grid .output-tile {
+      min-height: 128px;
+    }
+
+    .commissioner-output-grid .output-tile strong {
+      font-size: clamp(1.65rem, 2.5vw, 2.2rem);
+    }
+
+    .commissioner-model-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 800;
+      line-height: 1.55;
+      margin: -2px 0 16px;
+    }
+
+    .commissioner-summary {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(280px, 1.08fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .timeline-feature {
+      margin-top: 20px;
+      padding: 26px;
+      overflow-x: auto;
+    }
+
+    .timeline-feature h3 {
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      margin-bottom: 8px;
+    }
+
+    .timeline-feature p {
+      max-width: 900px;
+      font-size: 1.02rem;
+    }
+
+    .timeline-card canvas {
+      width: 100%;
+      min-width: 1040px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.035);
+      margin-top: 20px;
+    }
+
+    .fingerprint-card {
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(97,243,255,0.18), transparent 42%),
+        rgba(255,255,255,0.06);
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .fingerprint-card strong {
+      display: block;
+      font-size: clamp(1.35rem, 2vw, 1.9rem);
+      line-height: 1.12;
+      margin-bottom: 12px;
+    }
+
+    .fingerprint-card p {
+      color: var(--muted);
+      line-height: 1.58;
+      margin: 0;
+    }
+
+    .franchise-board {
+      display: grid;
+      gap: 10px;
+    }
+
+    .franchise-row {
+      display: grid;
+      grid-template-columns: minmax(74px, auto) minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.055);
+      border-radius: 18px;
+      padding: 12px;
+    }
+
+    .franchise-name {
+      font-weight: 950;
+    }
+
+    .franchise-track {
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.10);
+    }
+
+    .franchise-fill {
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--team-color), rgba(255,255,255,0.86));
+    }
+
+    .franchise-meta {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      text-align: right;
+      white-space: nowrap;
+    }
+
     .reveal {
       opacity: 0;
       transform: translateY(28px);
@@ -1365,10 +1632,10 @@
     .reveal.in-view { opacity: 1; transform: none; }
 
     @media (max-width: 1020px) {
-      .hero, .console-grid, .dna-grid, .lab-layout, .arena-layout, .takeaway-grid { grid-template-columns: 1fr; }
-      .selected-panel, .hist-wrap { grid-template-columns: 1fr; }
+      .hero, .console-grid, .dna-grid, .lab-layout, .commissioner-layout, .arena-layout, .takeaway-grid { grid-template-columns: 1fr; }
+      .selected-panel, .hist-wrap, .commissioner-summary { grid-template-columns: 1fr; }
       .explainer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .counter-grid, .sources-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .counter-grid, .sources-grid, .commissioner-output-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .stage { min-height: 520px; }
       .machine { min-height: 520px; }
     }
@@ -1377,9 +1644,12 @@
       section { padding: 58px 16px; }
       .nav-inner { align-items: flex-start; flex-direction: column; }
       .nav-links { justify-content: flex-start; }
-      .hero-stats, .model-output, .why-grid, .arena-score, .counter-grid, .sources-grid, .explainer-grid { grid-template-columns: 1fr; }
+      .hero-stats, .model-output, .why-grid, .arena-score, .counter-grid, .sources-grid, .explainer-grid, .commissioner-output-grid, .commissioner-actions { grid-template-columns: 1fr; }
       .bar-row { grid-template-columns: 1fr; gap: 8px; }
       .bar-value { text-align: left; }
+      .timeline-card { overflow-x: auto; }
+      .timeline-card canvas { min-width: 940px; }
+      .control-tooltip { left: 16px !important; right: 16px; top: auto !important; bottom: 20px; width: auto; }
       .selected-main h3 { font-size: 2rem; }
       .orb { width: 58px; height: 58px; font-size: 26px; border-radius: 20px; }
       .orbit-core { width: 270px; height: 270px; }
@@ -1401,6 +1671,7 @@
   <canvas id="bgCanvas" aria-hidden="true"></canvas>
   <canvas id="confettiCanvas" aria-hidden="true"></canvas>
   <div class="noise" aria-hidden="true"></div>
+  <div class="control-tooltip" id="controlTooltip" hidden></div>
 
   <header class="nav">
     <div class="nav-inner">
@@ -1409,6 +1680,7 @@
         <a href="#console">Data console</a>
         <a href="#dna">League DNA</a>
         <a href="#lab">Variance lab</a>
+        <a href="#commissioner">Commissioner</a>
         <a href="#arena">Upset arena</a>
         <a href="#takeaway">Answer</a>
       </nav>
@@ -1565,6 +1837,77 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="commissioner" class="reveal">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Commissioner Mode</span>
+          <h2>Design the league. Watch dynasties fight the format.</h2>
+        </div>
+        <p class="section-copy">Build a sport’s rules, simulate an era, and see whether the best teams actually become champions. Settings can be shared as a GitHub Pages URL.</p>
+      </div>
+
+      <div class="commissioner-layout">
+        <div class="commissioner-card glass">
+          <div class="commissioner-controls">
+            <div>
+              <h3 style="margin:0 0 10px; font-size:1.35rem;">League controls</h3>
+              <p style="color:var(--muted); line-height:1.6; margin:0;">This is an explanatory toy model. It is built for intuition, not forecasting.</p>
+            </div>
+            <div class="slider-grid">
+              <div class="slider-row"><label for="cmTeamSlider"><span class="label-copy">Team count <span class="help-dot" tabindex="0" aria-label="Team count help" data-tip="How many franchises exist. More teams spread titles across a larger field and make repeat champions harder.">?</span></span><span id="cmTeamValue">30</span></label><input id="cmTeamSlider" type="range" min="8" max="40" value="30"></div>
+              <div class="slider-row"><label for="cmGamesSlider"><span class="label-copy">Season games <span class="help-dot" tabindex="0" aria-label="Season games help" data-tip="Regular-season sample size. More games help true strength surface; short seasons leave more room for luck.">?</span></span><span id="cmGamesValue">82</span></label><input id="cmGamesSlider" type="range" min="17" max="162" value="82"></div>
+              <div class="slider-row"><label for="cmScoringSlider"><span class="label-copy">Scoring / possession signal <span class="help-dot" tabindex="0" aria-label="Scoring signal help" data-tip="How reliably one game reveals the better team. Higher means more possessions or scoring events and less single-game noise.">?</span></span><span id="cmScoringValue">102</span></label><input id="cmScoringSlider" type="range" min="2" max="120" value="102"></div>
+              <div class="slider-row"><label for="cmStarSlider"><span class="label-copy">Star leverage <span class="help-dot" tabindex="0" aria-label="Star leverage help" data-tip="How much elite talent can bend outcomes. Higher values make top-heavy teams more dangerous in games and series.">?</span></span><span id="cmStarValue">9.2</span></label><input id="cmStarSlider" type="range" min="1" max="10" step="0.1" value="9.2"></div>
+              <div class="slider-row"><label for="cmParitySlider"><span class="label-copy">Parity pressure <span class="help-dot" tabindex="0" aria-label="Parity pressure help" data-tip="How aggressively league structure keeps teams close. Higher parity flattens strengths and breaks dynasties.">?</span></span><span id="cmParityValue">5.4</span></label><input id="cmParitySlider" type="range" min="1" max="10" step="0.1" value="5.4"></div>
+              <div class="slider-row"><label for="cmDrawSlider"><span class="label-copy">Draw / non-win cap <span class="help-dot" tabindex="0" aria-label="Draw cap help" data-tip="How often games end without a full win. Draws lower win totals and add uncertainty before playoff tiebreaking removes them.">?</span></span><span id="cmDrawValue">0%</span></label><input id="cmDrawSlider" type="range" min="0" max="32" step="1" value="0"></div>
+              <div class="slider-row"><label for="cmPlayoffSlider"><span class="label-copy">Playoff teams <span class="help-dot" tabindex="0" aria-label="Playoff teams help" data-tip="How many teams qualify for the title bracket. Bigger brackets create more upset paths and can punish the top seed.">?</span></span><span id="cmPlayoffValue">16</span></label><input id="cmPlayoffSlider" type="range" min="2" max="24" value="16"></div>
+              <div class="slider-row"><label for="cmEraSlider"><span class="label-copy">Era length <span class="help-dot" tabindex="0" aria-label="Era length help" data-tip="How many seasons to simulate. Longer eras make it easier to see whether dominance persists or titles scatter.">?</span></span><span id="cmEraValue">50</span></label><input id="cmEraSlider" type="range" min="25" max="100" value="50"></div>
+            </div>
+            <div class="select-row">
+              <label for="cmSeriesSelect"><span class="label-copy">Playoff format <span class="help-dot" tabindex="0" aria-label="Playoff format help" data-tip="Single-game playoffs are more chaotic. Longer series make favorites more likely to advance.">?</span></span></label>
+              <select id="cmSeriesSelect">
+                <option value="1">Single game</option>
+                <option value="3">Best-of-3</option>
+                <option value="5">Best-of-5</option>
+                <option value="7" selected>Best-of-7</option>
+              </select>
+            </div>
+            <div class="preset-row" id="cmPresetRow"></div>
+            <div class="commissioner-actions">
+              <button class="btn primary" type="button" id="cmRunButton">Simulate era</button>
+              <button class="btn" type="button" id="cmCopyButton">Copy league link</button>
+            </div>
+            <div class="copy-status" id="cmCopyStatus" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="commissioner-card glass">
+          <div class="commissioner-output-grid">
+            <div class="output-tile"><strong id="cmBestTitleRate">0%</strong><span>Expected top-seed title rate</span></div>
+            <div class="output-tile"><strong id="cmMostTitles">0</strong><span>Expected max titles by one franchise</span></div>
+            <div class="output-tile"><strong id="cmLongestStreak">0</strong><span>Expected longest title streak</span></div>
+            <div class="output-tile"><strong id="cmDominantSeason">0%</strong><span>Expected most dominant season</span></div>
+            <div class="output-tile"><strong id="cmDynastyScore">0</strong><span>Expected dynasty concentration</span></div>
+          </div>
+          <p class="commissioner-model-note">Headlines are expected values across deterministic scenario samples; the champion timeline is one seeded example era.</p>
+
+          <div class="commissioner-summary">
+            <div class="fingerprint-card">
+              <strong id="cmFingerprintTitle">No league simulated yet.</strong>
+              <p id="cmFingerprintCopy">Choose settings, then run an era to see whether your rules manufacture dynasties or chaos.</p>
+            </div>
+            <div class="franchise-board" id="cmFranchiseBoard"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-card timeline-feature match-card glass">
+        <h3>Champion timeline</h3>
+        <p id="cmTimelineCaption">Run the simulator to generate an era.</p>
+        <canvas id="cmTimelineCanvas" width="1180" height="620"></canvas>
       </div>
     </section>
 
@@ -1746,8 +2089,20 @@
       selected: leagues[0],
       chartMode: 'winPct',
       raceTimer: null,
-      lastSim: []
+      lastSim: [],
+      commissionerResult: null
     };
+
+    const franchiseNames = [
+      'Apex Comets', 'Harbor Kings', 'Metro Sparks', 'Valley Forge', 'Union Heights',
+      'Skyline Rush', 'Iron District', 'Capital Keys', 'Northstar Summit', 'Silverline',
+      'Meridian Pulse', 'Beacon City', 'Copper State', 'Granite Towers', 'Pacific Voltage',
+      'Lakeside Arc', 'Atlas Union', 'Redline City', 'Crown City', 'Foundry FC',
+      'Aurora Heights', 'Golden Gate', 'Riverfront United', 'Summit City', 'Liberty Works',
+      'Central Station', 'Blue Ridge', 'Keystone City', 'Desert Signal', 'Emerald City',
+      'Highland Union', 'Gateway City', 'Bay Circuit', 'Canyon Echo', 'Prairie Grid',
+      'Coastal Current', 'Midtown Crown', 'Quartz City', 'Sunset Line', 'Frontier Forge'
+    ];
 
     const $ = (sel, root = document) => root.querySelector(sel);
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
@@ -1759,17 +2114,23 @@
       renderLeagueCards();
       renderChart();
       renderPresets();
+      renderCommissionerPresets();
       renderExplainers();
       renderSources();
       renderRankStack();
       bindControls();
       selectLeague('nba', false);
+      const loadedCommissionerUrl = hydrateCommissionerFromUrl();
       initCounters();
       initReveal();
       initBackground();
       runSimulation(false);
       runArena(false);
+      runCommissioner(false);
       renderCounterfactuals();
+      if (loadedCommissionerUrl) {
+        setTimeout(() => $('#commissioner').scrollIntoView({ block: 'start' }), 180);
+      }
     }
 
     function renderLeagueCards() {
@@ -2013,9 +2374,591 @@
       return out;
     }
 
-    function randomBinomial(n, p) {
+    function commissionerPresetPlayoffTeams(league) {
+      const defaults = { nba: 16, nfl: 14, nhl: 16, mlb: 12, epl: 4 };
+      return defaults[league.id] || Math.min(16, league.teams);
+    }
+
+    function renderCommissionerPresets() {
+      $('#cmPresetRow').innerHTML = leagues.map(l => `<button type="button" class="mini-btn" data-commissioner-preset="${l.id}">${l.icon} ${l.name}</button>`).join('');
+      $$('#cmPresetRow .mini-btn').forEach(btn => btn.addEventListener('click', () => {
+        const l = leagues.find(x => x.id === btn.dataset.commissionerPreset);
+        setCommissionerInputs({
+          teams: l.teams,
+          games: l.games,
+          scoring: l.scoring,
+          star: l.star,
+          parity: l.parity,
+          drawPercent: l.drawRate,
+          playoffTeams: commissionerPresetPlayoffTeams(l),
+          series: l.id === 'nfl' ? 1 : 7,
+          years: 50
+        });
+        runCommissioner(true);
+      }));
+    }
+
+    function setCommissionerInputs(inputs) {
+      const drawPercent = inputs.drawPercent ?? (inputs.draw != null ? inputs.draw * 100 : 0);
+      $('#cmTeamSlider').value = clamp(Math.round(inputs.teams ?? 30), 8, 40);
+      $('#cmGamesSlider').value = clamp(Math.round(inputs.games ?? 82), 17, 162);
+      $('#cmScoringSlider').value = clamp(Math.round(inputs.scoring ?? 102), 2, 120);
+      $('#cmStarSlider').value = clamp(Number(inputs.star ?? 9.2), 1, 10);
+      $('#cmParitySlider').value = clamp(Number(inputs.parity ?? 5.4), 1, 10);
+      $('#cmDrawSlider').value = clamp(Math.round(drawPercent), 0, 32);
+      $('#cmEraSlider').value = clamp(Math.round(inputs.years ?? 50), 25, 100);
+      const series = [1, 3, 5, 7].includes(Number(inputs.series)) ? Number(inputs.series) : 7;
+      $('#cmSeriesSelect').value = String(series);
+      updateCommissionerLabels();
+      $('#cmPlayoffSlider').value = clamp(Math.round(inputs.playoffTeams ?? 16), 2, Number($('#cmPlayoffSlider').max));
+      updateCommissionerLabels();
+    }
+
+    function updateCommissionerLabels() {
+      const teams = Number($('#cmTeamSlider').value);
+      const playoffMax = Math.min(24, teams);
+      const playoffSlider = $('#cmPlayoffSlider');
+      playoffSlider.max = playoffMax;
+      if (Number(playoffSlider.value) > playoffMax) playoffSlider.value = playoffMax;
+      if (Number(playoffSlider.value) < 2) playoffSlider.value = 2;
+      $('#cmTeamValue').textContent = teams;
+      $('#cmGamesValue').textContent = $('#cmGamesSlider').value;
+      $('#cmScoringValue').textContent = $('#cmScoringSlider').value;
+      $('#cmStarValue').textContent = Number($('#cmStarSlider').value).toFixed(1);
+      $('#cmParityValue').textContent = Number($('#cmParitySlider').value).toFixed(1);
+      $('#cmDrawValue').textContent = `${$('#cmDrawSlider').value}%`;
+      $('#cmPlayoffValue').textContent = playoffSlider.value;
+      $('#cmEraValue').textContent = $('#cmEraSlider').value;
+    }
+
+    function commissionerInputs() {
+      updateCommissionerLabels();
+      const series = Number($('#cmSeriesSelect').value);
+      return {
+        teams: Number($('#cmTeamSlider').value),
+        games: Number($('#cmGamesSlider').value),
+        scoring: Number($('#cmScoringSlider').value),
+        star: Number($('#cmStarSlider').value),
+        parity: Number($('#cmParitySlider').value),
+        draw: Number($('#cmDrawSlider').value) / 100,
+        playoffTeams: Math.min(Number($('#cmPlayoffSlider').value), Number($('#cmTeamSlider').value), 24),
+        series: [1, 3, 5, 7].includes(series) ? series : 7,
+        years: Number($('#cmEraSlider').value)
+      };
+    }
+
+    function hydrateCommissionerFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('cm') !== '1') return false;
+      const num = (key, fallback) => {
+        const value = Number(params.get(key));
+        return Number.isFinite(value) ? value : fallback;
+      };
+      setCommissionerInputs({
+        teams: num('tm', 30),
+        games: num('gm', 82),
+        scoring: num('sg', 102),
+        star: num('st', 9.2),
+        parity: num('pa', 5.4),
+        drawPercent: num('dr', 0),
+        playoffTeams: num('pt', 16),
+        series: num('bo', 7),
+        years: num('yr', 50)
+      });
+      return true;
+    }
+
+    function runCommissioner(withBurst = true) {
+      const inputs = normalizeCommissionerInputs(commissionerInputs());
+      const result = simulateCommissionerEra(inputs);
+      state.commissionerResult = result;
+      renderCommissionerResult(result);
+      $('#cmCopyStatus').textContent = '';
+      if (withBurst) burstAtElement($('#cmTimelineCanvas'), varColorFromScore(result.expected.dynastyScore), 72);
+    }
+
+    function normalizeCommissionerInputs(raw) {
+      const teams = clamp(Math.round(raw.teams), 8, 40);
+      const playoffTeams = clamp(Math.round(raw.playoffTeams), 2, Math.min(24, teams));
+      const series = [1, 3, 5, 7].includes(Number(raw.series)) ? Number(raw.series) : 7;
+      return {
+        teams,
+        games: clamp(Math.round(raw.games), 17, 162),
+        scoring: clamp(Math.round(raw.scoring), 2, 120),
+        star: clamp(Number(raw.star), 1, 10),
+        parity: clamp(Number(raw.parity), 1, 10),
+        draw: clamp(Number(raw.draw), 0, 0.32),
+        playoffTeams,
+        series,
+        years: clamp(Math.round(raw.years), 25, 100)
+      };
+    }
+
+    function deriveLeagueParameters(inputs) {
+      const signal = clamp(Math.log2(inputs.scoring + 1) / Math.log2(121), 0, 1);
+      const star = inputs.star / 10;
+      const parity = inputs.parity / 10;
+      const draw = inputs.draw;
+      const seasonFilter = clamp(Math.log(inputs.games) / Math.log(162), 0, 1);
+      const playoffShare = inputs.playoffTeams / inputs.teams;
+      const playoffDepth = Math.ceil(Math.log2(inputs.playoffTeams));
+      const teamScale = clamp(Math.log(inputs.teams) / Math.log(40), 0, 1);
+      const seriesStrength = (inputs.series - 1) / 6;
+      const seedingReliability = clamp(0.42 + 0.18 * signal + 0.15 * star + 0.14 * (1 - parity) + 0.08 * seasonFilter - 0.09 * draw - 0.08 * playoffShare, 0.36, 0.88);
+      const trueBestWinPct = clamp(0.50 + 0.15 * signal + 0.13 * star + 0.12 * (1 - parity) - 0.28 * draw, 0.50, 0.88);
+      const sampleLift = (0.018 + 0.030 * (1 - parity) + 0.018 * star) * Math.sqrt(82 / inputs.games) * Math.sqrt(Math.log(inputs.teams + 1) / Math.log(31));
+      const avgBestWinPct = clamp(trueBestWinPct + sampleLift, 0.50, 0.92);
+      const dominantLift = (0.020 + 0.022 * (1 - parity) + 0.015 * star + 0.012 * (1 - seasonFilter)) * Math.sqrt(82 / inputs.games) * Math.sqrt(Math.log(inputs.years + 1) / Math.log(101));
+      const dominantWinPct = clamp(avgBestWinPct + dominantLift, avgBestWinPct, 0.96);
+      const topSeedGameWin = clamp(0.52 + 0.16 * signal + 0.14 * star + 0.12 * (1 - parity) - 0.08 * draw - 0.03 * playoffShare, 0.52, 0.86);
+      const topSeedSeriesWin = seriesWinProbability(topSeedGameWin, inputs.series);
+      const titlePath = Math.pow(topSeedSeriesWin, playoffDepth);
+      const topSeedTitleRate = clamp(titlePath * seedingReliability * (1 - 0.16 * playoffShare) + 0.03 / (1 + playoffShare), 0.02, 0.88);
+      const dynastyScore = clamp(3 + 42 * Math.pow(1 - parity, 1.35) + 12 * star + 7 * signal + 6 * seriesStrength + 6 * topSeedTitleRate - 12 * playoffShare - 5 * draw - 3 * teamScale, 1, 70);
+      const maxTitleShare = clamp(1 / inputs.teams + dynastyScore / 100 * 0.26 + topSeedTitleRate * 0.07, 1 / inputs.teams, 0.55);
+      const expectedMaxTitles = Math.max(1, Math.round(inputs.years * maxTitleShare));
+      const expectedLongestStreak = Math.max(1, Math.round(clamp(1 + Math.sqrt(inputs.years / 25) * (dynastyScore / 13) + topSeedTitleRate * 2.5 + seriesStrength * 0.8 - playoffShare * 0.8, 1, inputs.years)));
+      const talentSpread = clamp(0.28 + 1.10 * (1 - parity) + 0.34 * star + 0.12 * signal, 0.28, 1.55);
+      const persistence = clamp(0.50 + 0.32 * (1 - parity), 0.50, 0.82);
+      const rebuildShock = clamp(talentSpread * (1 - persistence) * 0.50, 0.04, 0.24);
+      const seasonShock = clamp(0.06 + 0.12 * (1 - parity), 0.06, 0.18);
+      const ratingImpact = clamp(0.14 + 0.15 * signal + 0.10 * star - 0.06 * parity, 0.12, 0.36);
+      const playoffSlope = clamp(0.95 + 0.80 * signal + 0.58 * star - 0.28 * parity - 0.30 * draw, 0.75, 2.10);
+      return {
+        signal, star, parity, draw, seasonFilter, playoffShare, playoffDepth, teamScale, seriesStrength,
+        seedingReliability, trueBestWinPct, avgBestWinPct, dominantWinPct,
+        topSeedGameWin, topSeedSeriesWin, topSeedTitleRate,
+        dynastyScore, expectedMaxTitles, expectedLongestStreak,
+        talentSpread, persistence, rebuildShock, seasonShock, ratingImpact, playoffSlope
+      };
+    }
+
+    function simulateCommissionerEra(inputs) {
+      const params = deriveLeagueParameters(inputs);
+      const expected = simulateExpectedCommissionerOutcomes(inputs, params);
+      const example = simulateExampleCommissionerEra(inputs, params);
+      return { ...example, expected, params };
+    }
+
+    function simulateExpectedCommissionerOutcomes(inputs, params) {
+      const samples = 96;
+      let titleRate = 0;
+      let maxTitles = 0;
+      let longestStreak = 0;
+      let dominantWinPct = 0;
+      let dynastyScore = 0;
+      for (let i = 1; i <= samples; i++) {
+        const context = lowDiscrepancy(i, 2) - 0.5;
+        const field = lowDiscrepancy(i, 3) - 0.5;
+        titleRate += clamp(params.topSeedTitleRate * (1 + 0.035 * context) + 0.006 * field, 0, 1);
+        maxTitles += clamp(params.expectedMaxTitles * (1 + 0.06 * field), 1, inputs.years);
+        longestStreak += clamp(params.expectedLongestStreak * (1 + 0.05 * context), 1, inputs.years);
+        dominantWinPct += clamp(params.dominantWinPct * (1 + 0.010 * field), 0.50, 0.96);
+        dynastyScore += clamp(params.dynastyScore * (1 + 0.025 * context), 1, 100);
+      }
+      return {
+        topSeedTitleRate: titleRate / samples,
+        maxTitles: Math.round(maxTitles / samples),
+        longestStreak: Math.round(longestStreak / samples),
+        dominantWinPct: dominantWinPct / samples,
+        dynastyScore: dynastyScore / samples,
+        avgBestWinPct: params.avgBestWinPct
+      };
+    }
+
+    function simulateExampleCommissionerEra(inputs, params) {
+      const rng = createSeededRng(hashCommissionerInputs(inputs) ^ 0x9e3779b9);
+      const teams = Array.from({ length: inputs.teams }, (_, i) => ({
+        id: i,
+        name: franchiseNames[i] || `Expansion Team ${i + 1}`,
+        color: paletteColor(i, inputs.teams),
+        core: normalish(rng) * params.talentSpread
+      }));
+      const stats = teams.map(team => ({ team, titles: 0, bestSeasons: 0, playoffTrips: 0 }));
+      const seasons = [];
+      let bestTeamTitles = 0;
+      let longestStreak = 0;
+      let activeStreak = 0;
+      let lastChampionId = null;
+      let dominant = { winPct: 0, record: '0-0', team: teams[0], season: 1 };
+
+      for (let season = 1; season <= inputs.years; season++) {
+        const standings = simulateCommissionerSeason(teams, inputs, params, rng);
+        const playoffField = standings.slice(0, inputs.playoffTeams);
+        playoffField.forEach(row => stats[row.team.id].playoffTrips++);
+        const best = standings[0];
+        stats[best.team.id].bestSeasons++;
+        if (best.winPct > dominant.winPct) {
+          dominant = {
+            winPct: best.winPct,
+            record: `${best.wins}-${best.losses}${best.draws ? '-' + best.draws : ''}`,
+            team: best.team,
+            season
+          };
+        }
+        const champion = simulateCommissionerPlayoffs(playoffField, inputs, params, rng);
+        stats[champion.team.id].titles++;
+        if (champion.team.id === best.team.id) bestTeamTitles++;
+        if (champion.team.id === lastChampionId) activeStreak++;
+        else activeStreak = 1;
+        longestStreak = Math.max(longestStreak, activeStreak);
+        lastChampionId = champion.team.id;
+        seasons.push({
+          season,
+          champion: champion.team,
+          championSeed: champion.seed,
+          bestTeam: best.team,
+          bestWinPct: best.winPct,
+          bestRecord: `${best.wins}-${best.losses}${best.draws ? '-' + best.draws : ''}`
+        });
+        teams.forEach(team => {
+          team.core = clamp(team.core * params.persistence + normalish(rng) * params.rebuildShock, -2.6, 2.6);
+        });
+      }
+
+      const titleShares = stats.map(s => s.titles / inputs.years);
+      const concentration = titleShares.reduce((sum, share) => sum + share * share, 0) * 100;
+      const topStats = [...stats].sort((a, b) => b.titles - a.titles || b.bestSeasons - a.bestSeasons || a.team.id - b.team.id);
+      const avgBestWinPct = seasons.reduce((sum, season) => sum + season.bestWinPct, 0) / seasons.length;
+      return {
+        inputs,
+        teams,
+        stats,
+        topStats,
+        seasons,
+        bestTeamTitleRate: bestTeamTitles / inputs.years,
+        mostTitles: topStats[0]?.titles || 0,
+        longestStreak,
+        dominant,
+        concentration,
+        avgBestWinPct
+      };
+    }
+
+    function simulateCommissionerSeason(teams, inputs, params, rng) {
+      const rows = teams.map(team => ({
+        team,
+        rating: team.core + normalish(rng) * params.seasonShock,
+        wins: 0,
+        losses: 0,
+        draws: 0,
+        points: 0
+      }));
+      rows.forEach(row => {
+        const drawChance = clamp(inputs.draw * (0.78 - Math.min(0.22, Math.abs(row.rating) * 0.055)), 0, 0.42);
+        row.draws = randomBinomial(inputs.games, drawChance, rng);
+        const decisionGames = Math.max(0, inputs.games - row.draws);
+        row.wins = randomBinomial(decisionGames, commissionerRatingWinProbability(row.rating, params), rng);
+        row.losses = decisionGames - row.wins;
+        row.points = row.wins + row.draws * 0.5;
+        const played = Math.max(1, row.wins + row.losses + row.draws);
+        row.winPct = row.wins / played;
+        row.pointsPct = row.points / played;
+      });
+      return rows.sort((a, b) => b.pointsPct - a.pointsPct || b.wins - a.wins || b.rating - a.rating);
+    }
+
+    function simulateCommissionerPlayoffs(field, inputs, params, rng) {
+      let teams = field.map((row, i) => ({ team: row.team, rating: row.rating, seed: i + 1 }));
+      while (teams.length > 1) {
+        teams.sort((a, b) => a.seed - b.seed);
+        const next = [];
+        let low = 0;
+        let high = teams.length - 1;
+        if (teams.length % 2 === 1) next.push(teams[low++]);
+        while (low < high) {
+          const favorite = teams[low++];
+          const underdog = teams[high--];
+          next.push(simulateCommissionerSeries(favorite, underdog, inputs, params, rng));
+        }
+        teams = next;
+      }
+      return teams[0];
+    }
+
+    function simulateCommissionerSeries(a, b, inputs, params, rng) {
+      const pGame = commissionerGameWinProbability(a.rating, b.rating, params);
+      const pSeries = seriesWinProbability(pGame, inputs.series);
+      return rng() < pSeries ? a : b;
+    }
+
+    function commissionerRatingWinProbability(rating, params) {
+      return clamp(0.5 + Math.tanh(rating * params.ratingImpact) * 0.38, 0.06, 0.94);
+    }
+
+    function commissionerGameWinProbability(aRating, bRating, params) {
+      const edge = (aRating - bRating) * (1 - params.draw * 0.42);
+      return clamp(0.5 + Math.tanh(edge * params.playoffSlope / 2.2) * 0.42, 0.05, 0.95);
+    }
+
+    function seriesWinProbability(pGame, seriesGames) {
+      const needed = Math.ceil(seriesGames / 2);
+      let p = 0;
+      for (let wins = needed; wins <= seriesGames; wins++) {
+        p += binomialCoefficient(seriesGames, wins) * Math.pow(pGame, wins) * Math.pow(1 - pGame, seriesGames - wins);
+      }
+      return clamp(p, 0, 1);
+    }
+
+    function binomialCoefficient(n, k) {
+      let value = 1;
+      for (let i = 1; i <= k; i++) value = value * (n - i + 1) / i;
+      return value;
+    }
+
+    function renderCommissionerResult(result) {
+      const expected = result.expected;
+      $('#cmBestTitleRate').textContent = pct(expected.topSeedTitleRate, 0);
+      $('#cmMostTitles').textContent = expected.maxTitles.toLocaleString();
+      $('#cmLongestStreak').textContent = expected.longestStreak.toLocaleString();
+      $('#cmDominantSeason').textContent = pct(expected.dominantWinPct, 0);
+      $('#cmDynastyScore').textContent = Math.round(expected.dynastyScore).toLocaleString();
+      $('#cmTimelineCaption').textContent = `Example era: ${result.inputs.years} seasons, ${result.inputs.teams} teams, ${result.inputs.playoffTeams} playoff teams. Rows show who won each title; outlined marks mean the regular-season leader also won.`;
+      $('#cmFingerprintTitle').textContent = `Expected: ${pct(expected.avgBestWinPct, 0)} regular-season dominance converts into ${pct(expected.topSeedTitleRate, 0)} top-seed title rate.`;
+      $('#cmFingerprintCopy').textContent = `Example era: ${result.topStats[0].team.name} won ${result.topStats[0].titles} titles. The strongest example season was ${result.dominant.team.name} in Year ${result.dominant.season}: ${result.dominant.record}, ${pct(result.dominant.winPct)}. Expected score ${Math.round(expected.dynastyScore)}/100 means ${dynastyTone(expected.dynastyScore)}.`;
+      renderFranchiseBoard(result);
+      drawChampionTimeline(result);
+    }
+
+    function renderFranchiseBoard(result) {
+      const maxTitles = Math.max(1, ...result.topStats.map(s => s.titles));
+      $('#cmFranchiseBoard').innerHTML = result.topStats.slice(0, 6).map(s => `
+        <div class="franchise-row">
+          <div class="franchise-name">${s.team.name}</div>
+          <div class="franchise-track"><div class="franchise-fill" style="--team-color:${s.team.color}; width:${(s.titles / maxTitles) * 100}%"></div></div>
+          <div class="franchise-meta">${s.titles} titles · ${s.bestSeasons} top seeds</div>
+        </div>
+      `).join('');
+    }
+
+    function drawChampionTimeline(result) {
+      const canvas = $('#cmTimelineCanvas');
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width, h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = 'rgba(255,255,255,0.035)';
+      ctx.fillRect(0, 0, w, h);
+
+      const topStats = result.topStats.filter(s => s.titles > 0).slice(0, 5);
+      const topIds = new Set(topStats.map(s => s.team.id));
+      const otherTitles = result.stats.reduce((sum, s) => topIds.has(s.team.id) ? sum : sum + s.titles, 0);
+      const lanes = topStats.map(s => ({ id: s.team.id, name: s.team.name, color: s.team.color, titles: s.titles }));
+      if (otherTitles > 0) lanes.push({ id: 'other', name: 'Other teams', color: '#aab2d6', titles: otherTitles });
+
+      const left = 206;
+      const right = 46;
+      const top = 118;
+      const rowH = 54;
+      const rowGap = 22;
+      const innerW = w - left - right;
+      const years = result.seasons.length;
+      const markW = clamp(innerW / years * 0.82, 7, 18);
+      const xForSeason = (season) => left + ((season - 1) / Math.max(1, years - 1)) * innerW;
+
+      ctx.fillStyle = '#fff';
+      ctx.font = '950 34px Inter, system-ui, sans-serif';
+      ctx.fillText('Dynasty lanes', 36, 48);
+      ctx.fillStyle = 'rgba(170,178,214,0.88)';
+      ctx.font = '800 18px Inter, system-ui, sans-serif';
+      ctx.fillText('Each mark is one championship. White outlines mean the regular-season leader also won the title.', 36, 78);
+
+      for (let i = 0; i <= 4; i++) {
+        const x = left + i * innerW / 4;
+        ctx.strokeStyle = 'rgba(255,255,255,0.10)';
+        ctx.beginPath(); ctx.moveTo(x, top - 18); ctx.lineTo(x, h - 86); ctx.stroke();
+        ctx.fillStyle = 'rgba(170,178,214,0.88)';
+        ctx.font = '850 17px Inter, system-ui, sans-serif';
+        ctx.fillText(`Year ${Math.round(1 + i * (years - 1) / 4)}`, x - 24, h - 52);
+      }
+
+      lanes.forEach((lane, i) => {
+        const y = top + i * (rowH + rowGap);
+        ctx.fillStyle = 'rgba(255,255,255,0.045)';
+        roundedRect(ctx, left, y, innerW, rowH, 16); ctx.fill();
+        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+        roundedRect(ctx, left, y, innerW, rowH, 16); ctx.stroke();
+        ctx.fillStyle = lane.color;
+        roundedRect(ctx, 36, y + 12, 28, 28, 9); ctx.fill();
+        ctx.fillStyle = '#fff';
+        ctx.font = '900 20px Inter, system-ui, sans-serif';
+        ctx.fillText(lane.name, 76, y + 22);
+        ctx.fillStyle = 'rgba(170,178,214,0.92)';
+        ctx.font = '800 15px Inter, system-ui, sans-serif';
+        ctx.fillText(`${lane.titles} titles`, 76, y + 43);
+      });
+
+      const laneById = new Map(lanes.map((lane, i) => [lane.id, i]));
+      result.seasons.forEach(season => {
+        const laneIndex = laneById.has(season.champion.id) ? laneById.get(season.champion.id) : laneById.get('other');
+        if (laneIndex == null) return;
+        const lane = lanes[laneIndex];
+        const x = xForSeason(season.season) - markW / 2;
+        const y = top + laneIndex * (rowH + rowGap) + 8;
+        ctx.globalAlpha = season.champion.id === season.bestTeam.id ? 0.98 : 0.72;
+        ctx.fillStyle = lane.color;
+        roundedRect(ctx, x, y, markW, rowH - 16, Math.min(9, markW / 2)); ctx.fill();
+        if (season.champion.id === season.bestTeam.id) {
+          ctx.globalAlpha = 1;
+          ctx.strokeStyle = 'rgba(255,255,255,0.95)';
+          ctx.lineWidth = 3;
+          roundedRect(ctx, x - 2, y - 2, markW + 4, rowH - 12, Math.min(10, markW / 2 + 2)); ctx.stroke();
+          ctx.lineWidth = 1;
+        }
+      });
+      ctx.globalAlpha = 1;
+
+      const conversionX = 36;
+      const conversionY = h - 34;
+      ctx.fillStyle = 'rgba(255,255,255,0.10)';
+      roundedRect(ctx, conversionX, conversionY - 28, 24, 24, 7); ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.95)';
+      ctx.lineWidth = 3;
+      roundedRect(ctx, conversionX - 2, conversionY - 30, 28, 28, 8); ctx.stroke();
+      ctx.lineWidth = 1;
+      ctx.fillStyle = 'rgba(170,178,214,0.92)';
+      ctx.font = '900 18px Inter, system-ui, sans-serif';
+      ctx.fillText(`${pct(result.bestTeamTitleRate, 0)} top-seed conversion`, conversionX + 42, conversionY - 10);
+    }
+
+    function commissionerShareUrl() {
+      const inputs = commissionerInputs();
+      const url = new URL(window.location.href);
+      url.searchParams.set('cm', '1');
+      url.searchParams.set('tm', inputs.teams);
+      url.searchParams.set('gm', inputs.games);
+      url.searchParams.set('sg', inputs.scoring);
+      url.searchParams.set('st', inputs.star.toFixed(1));
+      url.searchParams.set('pa', inputs.parity.toFixed(1));
+      url.searchParams.set('dr', Math.round(inputs.draw * 100));
+      url.searchParams.set('pt', inputs.playoffTeams);
+      url.searchParams.set('bo', inputs.series);
+      url.searchParams.set('yr', inputs.years);
+      url.hash = 'commissioner';
+      return url.toString();
+    }
+
+    async function copyCommissionerLink() {
+      const url = commissionerShareUrl();
+      let copied = false;
+      try {
+        if (navigator.clipboard) {
+          await navigator.clipboard.writeText(url);
+          copied = true;
+        }
+      } catch {
+        copied = false;
+      }
+      if (!copied) {
+        const text = document.createElement('textarea');
+        text.value = url;
+        text.setAttribute('readonly', '');
+        text.style.position = 'fixed';
+        text.style.left = '-9999px';
+        document.body.appendChild(text);
+        text.select();
+        try { copied = document.execCommand('copy'); }
+        catch { copied = false; }
+        text.remove();
+      }
+      $('#cmCopyStatus').textContent = copied ? 'League link copied. Random outcomes will reroll, but the settings are preserved.' : `Copy failed. Share this URL: ${url}`;
+    }
+
+    function showControlTooltip(dot) {
+      const tip = $('#controlTooltip');
+      tip.textContent = dot.dataset.tip || '';
+      tip.hidden = false;
+      if (window.innerWidth <= 720) return;
+      const rect = dot.getBoundingClientRect();
+      const width = Math.min(320, window.innerWidth - 32);
+      tip.style.width = `${width}px`;
+      const left = clamp(rect.left + rect.width / 2 - width / 2, 16, window.innerWidth - width - 16);
+      tip.style.left = `${left}px`;
+      tip.style.right = 'auto';
+      tip.style.bottom = 'auto';
+      let top = rect.bottom + 12;
+      const height = tip.offsetHeight || 96;
+      if (top + height > window.innerHeight - 16) top = rect.top - height - 12;
+      tip.style.top = `${Math.max(16, top)}px`;
+    }
+
+    function hideControlTooltip() {
+      $('#controlTooltip').hidden = true;
+    }
+
+    function lowDiscrepancy(index, base) {
+      let n = index;
+      let factor = 1;
+      let value = 0;
+      while (n > 0) {
+        factor /= base;
+        value += factor * (n % base);
+        n = Math.floor(n / base);
+      }
+      return value;
+    }
+
+    function hashCommissionerInputs(inputs) {
+      const key = [
+        inputs.teams, inputs.games, inputs.scoring, inputs.star.toFixed(1), inputs.parity.toFixed(1),
+        Math.round(inputs.draw * 100), inputs.playoffTeams, inputs.series, inputs.years
+      ].join('|');
+      let hash = 2166136261;
+      for (let i = 0; i < key.length; i++) {
+        hash ^= key.charCodeAt(i);
+        hash = Math.imul(hash, 16777619);
+      }
+      return hash >>> 0;
+    }
+
+    function createSeededRng(seed) {
+      let value = seed >>> 0;
+      return function rng() {
+        value += 0x6D2B79F5;
+        let t = value;
+        t = Math.imul(t ^ (t >>> 15), t | 1);
+        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+
+    function normalish(rng = Math.random) {
+      return (rng() + rng() + rng() + rng() - 2) / 1.12;
+    }
+
+    function shuffle(items, rng = Math.random) {
+      for (let i = items.length - 1; i > 0; i--) {
+        const j = Math.floor(rng() * (i + 1));
+        [items[i], items[j]] = [items[j], items[i]];
+      }
+      return items;
+    }
+
+    function paletteColor(i, total) {
+      const hue = (188 + i * 317 / Math.max(1, total)) % 360;
+      return `hsl(${hue}, 86%, 64%)`;
+    }
+
+    function seriesLabel(series) {
+      return series === 1 ? 'single-game' : `best-of-${series}`;
+    }
+
+    function dynastyTone(score) {
+      if (score >= 34) return 'a dynasty-heavy universe';
+      if (score >= 18) return 'a league with real repeat-power';
+      if (score >= 9) return 'a balanced league with occasional dynasties';
+      return 'a chaos league where titles scatter';
+    }
+
+    function varColorFromScore(score) {
+      if (score >= 34) return '#ff6bd6';
+      if (score >= 18) return '#ffe76b';
+      if (score >= 9) return '#61f3ff';
+      return '#6effa2';
+    }
+
+    function randomBinomial(n, p, rng = Math.random) {
       let k = 0;
-      for (let i = 0; i < n; i++) if (Math.random() < p) k++;
+      for (let i = 0; i < n; i++) if (rng() < p) k++;
       return k;
     }
 
@@ -2262,6 +3205,27 @@
         fireConfetti();
       });
       $('#raceButton').addEventListener('click', runRaceMode);
+      $$('.help-dot').forEach(dot => dot.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        dot.focus();
+        showControlTooltip(dot);
+      }));
+      $$('.help-dot').forEach(dot => {
+        dot.addEventListener('mouseenter', () => showControlTooltip(dot));
+        dot.addEventListener('focus', () => showControlTooltip(dot));
+        dot.addEventListener('mouseleave', hideControlTooltip);
+        dot.addEventListener('blur', hideControlTooltip);
+      });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') hideControlTooltip(); });
+      window.addEventListener('scroll', hideControlTooltip, { passive: true });
+      ['cmTeamSlider','cmGamesSlider','cmScoringSlider','cmStarSlider','cmParitySlider','cmDrawSlider','cmPlayoffSlider','cmEraSlider'].forEach(id => {
+        $('#' + id).addEventListener('input', updateCommissionerLabels);
+        $('#' + id).addEventListener('change', () => runCommissioner(false));
+      });
+      $('#cmSeriesSelect').addEventListener('change', () => runCommissioner(false));
+      $('#cmRunButton').addEventListener('click', () => runCommissioner(true));
+      $('#cmCopyButton').addEventListener('click', copyCommissionerLink);
     }
 
     function runRaceMode() {
