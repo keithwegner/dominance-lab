@@ -96,6 +96,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      min-width: 0;
     }
 
     .brand {
@@ -104,6 +105,7 @@
       gap: 10px;
       font-weight: 900;
       letter-spacing: -0.03em;
+      flex: 0 0 auto;
     }
 
     .brand-mark {
@@ -122,9 +124,15 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       justify-content: flex-end;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+      min-width: 0;
     }
+
+    .nav-links::-webkit-scrollbar { display: none; }
 
     .nav-links a, .pill, button {
       font-family: inherit;
@@ -227,6 +235,27 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+    }
+
+    .tool-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      max-width: 900px;
+      margin: -6px 0 22px;
+      padding: 10px 13px;
+      border: 1px solid rgba(97,243,255,0.18);
+      border-left: 3px solid var(--accent);
+      border-radius: 14px;
+      background: rgba(97,243,255,0.055);
+      color: #dfe4ff;
+      font-size: 0.9rem;
+      font-weight: 850;
+      line-height: 1.45;
+    }
+
+    .tool-note strong {
+      color: var(--accent);
     }
 
     .btn {
@@ -757,6 +786,9 @@
       padding: 20px;
       position: relative;
       overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 22px;
+      background: rgba(255,255,255,0.038);
     }
 
     .chart-toolbar {
@@ -790,6 +822,15 @@
     .segmented button.active {
       color: #061020;
       background: var(--accent);
+    }
+
+    .chart-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.10);
     }
 
     .bar-chart {
@@ -983,6 +1024,24 @@
       margin-top: 20px;
     }
 
+    .control-group {
+      display: grid;
+      gap: 14px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.042);
+    }
+
+    .control-group h4, .control-subhead {
+      margin: 0;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
     .slider-row label {
       display: flex;
       justify-content: space-between;
@@ -1005,6 +1064,18 @@
       cursor: pointer;
     }
 
+    .slider-scale {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
     .preset-row {
       display: flex;
       flex-wrap: wrap;
@@ -1024,7 +1095,12 @@
       transition: transform 180ms ease, background 180ms ease;
     }
 
-    .mini-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.10); }
+    .mini-btn:hover, .mini-btn:focus-visible {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(97,243,255,0.54);
+      outline: none;
+    }
 
     .model-output {
       display: grid;
@@ -1035,8 +1111,8 @@
 
     .output-tile {
       border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.11);
-      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(255,255,255,0.045);
       padding: 16px;
       min-height: 116px;
       overflow: hidden;
@@ -1052,7 +1128,7 @@
       top: -60px;
       border-radius: 50%;
       background: radial-gradient(circle, var(--accent), transparent 70%);
-      opacity: 0.16;
+      opacity: 0.09;
     }
 
     .output-tile strong {
@@ -1504,6 +1580,261 @@
       overflow-wrap: anywhere;
     }
 
+    .challenge-panel {
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(255,231,107,0.16), transparent 38%),
+        rgba(255,255,255,0.055);
+      padding: 16px;
+      display: grid;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .challenge-panel h3 {
+      margin: 0 0 8px;
+      font-size: 1.28rem;
+      letter-spacing: -0.03em;
+    }
+
+    .challenge-panel p {
+      color: var(--muted);
+      line-height: 1.52;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .challenge-missions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .challenge-card {
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      background: rgba(5,7,22,0.34);
+      padding: 13px;
+      display: grid;
+      gap: 11px;
+      transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .challenge-card.active {
+      border-color: color-mix(in srgb, var(--challenge-color) 74%, white 18%);
+      background:
+        linear-gradient(135deg, color-mix(in srgb, var(--challenge-color) 18%, transparent), transparent 62%),
+        rgba(255,255,255,0.065);
+    }
+
+    .challenge-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .challenge-card-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .challenge-card-title strong {
+      font-size: 0.98rem;
+      letter-spacing: -0.02em;
+    }
+
+    .challenge-card-title span {
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: color-mix(in srgb, var(--challenge-color) 22%, rgba(255,255,255,0.08));
+      color: var(--challenge-color);
+      font-weight: 950;
+    }
+
+    .challenge-card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .challenge-action {
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.075);
+      color: var(--text);
+      padding: 9px 10px;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .challenge-action:hover, .challenge-action:focus-visible {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.12);
+      border-color: color-mix(in srgb, var(--challenge-color) 62%, white 18%);
+      outline: none;
+    }
+
+    .active-challenge-strip {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid color-mix(in srgb, var(--challenge-color) 42%, rgba(255,255,255,0.12));
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--challenge-color) 12%, rgba(255,255,255,0.045));
+    }
+
+    .active-challenge-grade {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: var(--challenge-color);
+      color: #061020;
+      font-size: 1.35rem;
+      font-weight: 950;
+      letter-spacing: -0.06em;
+    }
+
+    .active-challenge-strip strong {
+      display: block;
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+
+    .active-challenge-strip span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 850;
+      line-height: 1.35;
+    }
+
+    .challenge-score {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.11);
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(255,255,255,0.055);
+    }
+
+    .challenge-grade {
+      width: 66px;
+      height: 66px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      background: var(--challenge-color);
+      color: #061020;
+      font-size: 2rem;
+      font-weight: 950;
+      letter-spacing: -0.07em;
+    }
+
+    .challenge-score strong {
+      font-size: 1.65rem;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .challenge-score small {
+      color: var(--muted);
+      font-weight: 900;
+    }
+
+    .challenge-goals {
+      display: grid;
+      gap: 9px;
+    }
+
+    .challenge-goal {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 15px;
+      padding: 10px;
+      background: rgba(255,255,255,0.045);
+    }
+
+    .challenge-goal strong {
+      display: block;
+      font-size: 0.82rem;
+      line-height: 1.25;
+    }
+
+    .challenge-goal span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .challenge-progress {
+      grid-column: 1 / -1;
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.10);
+    }
+
+    .challenge-progress div {
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--challenge-color), rgba(255,255,255,0.90));
+    }
+
+    .timeline-list {
+      display: none;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .timeline-list-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 11px;
+      background: rgba(255,255,255,0.045);
+    }
+
+    .timeline-list-row strong {
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .timeline-list-row span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .timeline-list-count {
+      min-width: 54px;
+      border-radius: 999px;
+      padding: 7px 9px;
+      text-align: center;
+      background: var(--team-color);
+      color: #061020;
+      font-weight: 950;
+    }
+
     .commissioner-output-grid {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -1551,8 +1882,9 @@
     }
 
     .timeline-card canvas {
+      display: block;
       width: 100%;
-      min-width: 1040px;
+      min-width: 1120px;
       border-radius: 24px;
       background: rgba(255,255,255,0.035);
       margin-top: 20px;
@@ -1636,25 +1968,35 @@
       .selected-panel, .hist-wrap, .commissioner-summary { grid-template-columns: 1fr; }
       .explainer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .counter-grid, .sources-grid, .commissioner-output-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .stage { min-height: 520px; }
-      .machine { min-height: 520px; }
+      .stage { min-height: 430px; }
+      .machine { min-height: 430px; }
     }
 
     @media (max-width: 720px) {
       section { padding: 58px 16px; }
       .nav-inner { align-items: flex-start; flex-direction: column; }
-      .nav-links { justify-content: flex-start; }
+      .nav-links { justify-content: flex-start; width: 100%; padding-bottom: 6px; }
+      .hero { min-height: auto; padding-top: 34px; gap: 24px; }
+      h1 { font-size: 3rem; line-height: 1.03; letter-spacing: 0; }
+      h2 { font-size: 2.35rem; line-height: 1.05; letter-spacing: 0; }
+      .hero-actions .btn { width: 100%; text-align: center; }
       .hero-stats, .model-output, .why-grid, .arena-score, .counter-grid, .sources-grid, .explainer-grid, .commissioner-output-grid, .commissioner-actions { grid-template-columns: 1fr; }
+      .challenge-card-actions, .challenge-score, .challenge-goal, .timeline-list-row { grid-template-columns: 1fr; }
+      .challenge-grade { width: 58px; height: 58px; font-size: 1.8rem; }
       .bar-row { grid-template-columns: 1fr; gap: 8px; }
       .bar-value { text-align: left; }
       .timeline-card { overflow-x: auto; }
-      .timeline-card canvas { min-width: 940px; }
+      .timeline-card canvas { display: none; }
+      .timeline-list { display: grid; }
       .control-tooltip { left: 16px !important; right: 16px; top: auto !important; bottom: 20px; width: auto; }
       .selected-main h3 { font-size: 2rem; }
+      .stage { min-height: 300px; }
+      .machine { min-height: 300px; }
       .orb { width: 58px; height: 58px; font-size: 26px; border-radius: 20px; }
       .orbit-core { width: 270px; height: 270px; }
       .orbit-core::before { inset: -28px; }
       .orbit-core::after { inset: -54px; }
+      .ticker { display: none; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1677,11 +2019,11 @@
     <div class="nav-inner">
       <div class="brand"><div class="brand-mark">%</div><span>Dominance Lab</span></div>
       <nav class="nav-links" aria-label="Page navigation">
-        <a href="#console">Data console</a>
-        <a href="#dna">League DNA</a>
-        <a href="#lab">Variance lab</a>
-        <a href="#commissioner">Commissioner</a>
-        <a href="#arena">Upset arena</a>
+        <a href="#console">Leagues</a>
+        <a href="#dna">Why</a>
+        <a href="#lab">Season Noise</a>
+        <a href="#commissioner">Build + Challenge</a>
+        <a href="#arena">Upsets</a>
         <a href="#takeaway">Answer</a>
       </nav>
     </div>
@@ -1696,9 +2038,8 @@
           Top-team win percentages are not just about “how good the best team is.” They are a collision between scoring frequency, possession volume, superstar leverage, roster parity, draw rules, schedule length, and plain single-game variance.
         </p>
         <div class="hero-actions">
-          <a class="btn primary" href="#console">Enter the console</a>
-          <button class="btn" id="chaosButton" type="button">Detonate chart confetti</button>
-          <button class="btn" id="raceButton" type="button">Run sport race mode</button>
+          <a class="btn primary" href="#console">Explore leagues</a>
+          <a class="btn" href="#commissioner">Try Commissioner Mode</a>
         </div>
         <div class="hero-stats" aria-label="Summary statistics">
           <div class="stat-tile"><span class="stat-value count" data-target="82.9">0</span><span class="stat-label">Highest selected win percentage: 2024-25 Oklahoma City Thunder</span></div>
@@ -1737,6 +2078,7 @@
         </div>
         <p class="section-copy">The chart uses recent completed regular seasons. For NHL and EPL, the “points share” view accounts for overtime-loss points and draws; the “win %” view is literal wins divided by scheduled games.</p>
       </div>
+      <p class="tool-note"><strong>Teaches:</strong> real top records are the fastest way to see how each sport’s format changes dominance.</p>
 
       <div class="console-grid">
         <div class="league-list glass" id="leagueCards" aria-label="League selector"></div>
@@ -1754,18 +2096,22 @@
             </div>
           </div>
 
-          <div class="chart-card glass" id="chartCard">
+          <div class="chart-card" id="chartCard">
             <div class="chart-toolbar">
               <div>
                 <span class="section-kicker">Top-team record race</span>
                 <h3 style="margin:0; letter-spacing:-0.04em; font-size:1.45rem;">Recent top regular-season teams</h3>
               </div>
               <div class="segmented" role="tablist" aria-label="Chart mode">
-                <button type="button" class="active" data-chart-mode="winPct">Win %</button>
-                <button type="button" data-chart-mode="pointsPct">Pts share</button>
+                <button type="button" role="tab" aria-selected="true" class="active" data-chart-mode="winPct">Win %</button>
+                <button type="button" role="tab" aria-selected="false" data-chart-mode="pointsPct">Pts share</button>
               </div>
             </div>
             <div class="bar-chart" id="barChart"></div>
+            <div class="chart-tools" aria-label="Playful chart tools">
+              <button class="mini-btn" id="raceButton" type="button">Race leagues</button>
+              <button class="mini-btn" id="chaosButton" type="button">Chart confetti</button>
+            </div>
           </div>
         </div>
       </div>
@@ -1779,6 +2125,7 @@
         </div>
         <p class="section-copy">The radar is an explanatory scoring model, not an official league metric. It translates sport structure into comparable design forces.</p>
       </div>
+      <p class="tool-note"><strong>Teaches:</strong> game signal, star leverage, season length, parity, variance, and draw rules pull records in different directions.</p>
 
       <div class="dna-grid">
         <div class="radar-card glass">
@@ -1797,11 +2144,12 @@
     <section id="lab" class="reveal">
       <div class="section-head">
         <div>
-          <span class="section-kicker">Variance lab</span>
+          <span class="section-kicker">Season Noise Lab</span>
           <h2>Build your own sport and simulate the ceiling.</h2>
         </div>
         <p class="section-copy">Move the sliders to see how game signal, parity, draws, and season length change an elite team’s expected record. Presets load the five leagues’ approximate structural profiles.</p>
       </div>
+      <p class="tool-note"><strong>Teaches:</strong> repeated seasons separate stable structure from noisy one-year records.</p>
 
       <div class="lab-layout">
         <div class="lab-card glass">
@@ -1848,6 +2196,7 @@
         </div>
         <p class="section-copy">Build a sport’s rules, simulate an era, and see whether the best teams actually become champions. Settings can be shared as a GitHub Pages URL.</p>
       </div>
+      <p class="tool-note"><strong>Teaches:</strong> dynasties depend on talent persistence, playoff design, league size, and how reliably favorites survive.</p>
 
       <div class="commissioner-layout">
         <div class="commissioner-card glass">
@@ -1856,25 +2205,74 @@
               <h3 style="margin:0 0 10px; font-size:1.35rem;">League controls</h3>
               <p style="color:var(--muted); line-height:1.6; margin:0;">This is an explanatory toy model. It is built for intuition, not forecasting.</p>
             </div>
+            <div class="active-challenge-strip" style="--challenge-color:#ff6bd6;">
+              <div class="active-challenge-grade" id="cmActiveChallengeGrade">D</div>
+              <div>
+                <strong id="cmActiveChallengeName">Dynasty Maker</strong>
+                <span id="cmActiveChallengeScore">0/100 challenge score</span>
+              </div>
+            </div>
             <div class="slider-grid">
-              <div class="slider-row"><label for="cmTeamSlider"><span class="label-copy">Team count <span class="help-dot" tabindex="0" aria-label="Team count help" data-tip="How many franchises exist. More teams spread titles across a larger field and make repeat champions harder.">?</span></span><span id="cmTeamValue">30</span></label><input id="cmTeamSlider" type="range" min="8" max="40" value="30"></div>
-              <div class="slider-row"><label for="cmGamesSlider"><span class="label-copy">Season games <span class="help-dot" tabindex="0" aria-label="Season games help" data-tip="Regular-season sample size. More games help true strength surface; short seasons leave more room for luck.">?</span></span><span id="cmGamesValue">82</span></label><input id="cmGamesSlider" type="range" min="17" max="162" value="82"></div>
-              <div class="slider-row"><label for="cmScoringSlider"><span class="label-copy">Scoring / possession signal <span class="help-dot" tabindex="0" aria-label="Scoring signal help" data-tip="How reliably one game reveals the better team. Higher means more possessions or scoring events and less single-game noise.">?</span></span><span id="cmScoringValue">102</span></label><input id="cmScoringSlider" type="range" min="2" max="120" value="102"></div>
-              <div class="slider-row"><label for="cmStarSlider"><span class="label-copy">Star leverage <span class="help-dot" tabindex="0" aria-label="Star leverage help" data-tip="How much elite talent can bend outcomes. Higher values make top-heavy teams more dangerous in games and series.">?</span></span><span id="cmStarValue">9.2</span></label><input id="cmStarSlider" type="range" min="1" max="10" step="0.1" value="9.2"></div>
-              <div class="slider-row"><label for="cmParitySlider"><span class="label-copy">Parity pressure <span class="help-dot" tabindex="0" aria-label="Parity pressure help" data-tip="How aggressively league structure keeps teams close. Higher parity flattens strengths and breaks dynasties.">?</span></span><span id="cmParityValue">5.4</span></label><input id="cmParitySlider" type="range" min="1" max="10" step="0.1" value="5.4"></div>
-              <div class="slider-row"><label for="cmDrawSlider"><span class="label-copy">Draw / non-win cap <span class="help-dot" tabindex="0" aria-label="Draw cap help" data-tip="How often games end without a full win. Draws lower win totals and add uncertainty before playoff tiebreaking removes them.">?</span></span><span id="cmDrawValue">0%</span></label><input id="cmDrawSlider" type="range" min="0" max="32" step="1" value="0"></div>
-              <div class="slider-row"><label for="cmPlayoffSlider"><span class="label-copy">Playoff teams <span class="help-dot" tabindex="0" aria-label="Playoff teams help" data-tip="How many teams qualify for the title bracket. Bigger brackets create more upset paths and can punish the top seed.">?</span></span><span id="cmPlayoffValue">16</span></label><input id="cmPlayoffSlider" type="range" min="2" max="24" value="16"></div>
-              <div class="slider-row"><label for="cmEraSlider"><span class="label-copy">Era length <span class="help-dot" tabindex="0" aria-label="Era length help" data-tip="How many seasons to simulate. Longer eras make it easier to see whether dominance persists or titles scatter.">?</span></span><span id="cmEraValue">50</span></label><input id="cmEraSlider" type="range" min="25" max="100" value="50"></div>
+              <div class="control-group">
+                <h4>League shape</h4>
+                <div class="slider-row">
+                  <label for="cmTeamSlider"><span class="label-copy">Team count <span class="help-dot" tabindex="0" aria-label="Team count help" data-tip="How many franchises exist. More teams spread titles across a larger field and make repeat champions harder.">?</span></span><span id="cmTeamValue">30</span></label>
+                  <input id="cmTeamSlider" type="range" min="8" max="40" value="30">
+                  <div class="slider-scale"><span>8 teams</span><span>40 teams</span></div>
+                </div>
+                <div class="slider-row">
+                  <label for="cmGamesSlider"><span class="label-copy">Season games <span class="help-dot" tabindex="0" aria-label="Season games help" data-tip="Regular-season sample size. More games help true strength surface; short seasons leave more room for luck.">?</span></span><span id="cmGamesValue">82</span></label>
+                  <input id="cmGamesSlider" type="range" min="17" max="162" value="82">
+                  <div class="slider-scale"><span>17 games</span><span>162 games</span></div>
+                </div>
+                <div class="slider-row">
+                  <label for="cmEraSlider"><span class="label-copy">Era length <span class="help-dot" tabindex="0" aria-label="Era length help" data-tip="How many seasons to simulate. Longer eras make it easier to see whether dominance persists or titles scatter.">?</span></span><span id="cmEraValue">50</span></label>
+                  <input id="cmEraSlider" type="range" min="25" max="100" value="50">
+                  <div class="slider-scale"><span>25 seasons</span><span>100 seasons</span></div>
+                </div>
+              </div>
+              <div class="control-group">
+                <h4>Game signal</h4>
+                <div class="slider-row">
+                  <label for="cmScoringSlider"><span class="label-copy">Scoring / possession signal <span class="help-dot" tabindex="0" aria-label="Scoring signal help" data-tip="How reliably one game reveals the better team. Higher means more possessions or scoring events and less single-game noise.">?</span></span><span id="cmScoringValue">102</span></label>
+                  <input id="cmScoringSlider" type="range" min="2" max="120" value="102">
+                  <div class="slider-scale"><span>low signal</span><span>high signal</span></div>
+                </div>
+                <div class="slider-row">
+                  <label for="cmStarSlider"><span class="label-copy">Star leverage <span class="help-dot" tabindex="0" aria-label="Star leverage help" data-tip="How much elite talent can bend outcomes. Higher values make top-heavy teams more dangerous in games and series.">?</span></span><span id="cmStarValue">9.2</span></label>
+                  <input id="cmStarSlider" type="range" min="1" max="10" step="0.1" value="9.2">
+                  <div class="slider-scale"><span>distributed</span><span>star-driven</span></div>
+                </div>
+                <div class="slider-row">
+                  <label for="cmParitySlider"><span class="label-copy">Parity pressure <span class="help-dot" tabindex="0" aria-label="Parity pressure help" data-tip="How aggressively league structure keeps teams close. Higher parity flattens strengths and breaks dynasties.">?</span></span><span id="cmParityValue">5.4</span></label>
+                  <input id="cmParitySlider" type="range" min="1" max="10" step="0.1" value="5.4">
+                  <div class="slider-scale"><span>wide gaps</span><span>tight field</span></div>
+                </div>
+                <div class="slider-row">
+                  <label for="cmDrawSlider"><span class="label-copy">Draw / non-win cap <span class="help-dot" tabindex="0" aria-label="Draw cap help" data-tip="How often games end without a full win. Draws lower win totals and add uncertainty before playoff tiebreaking removes them.">?</span></span><span id="cmDrawValue">0%</span></label>
+                  <input id="cmDrawSlider" type="range" min="0" max="32" step="1" value="0">
+                  <div class="slider-scale"><span>0%</span><span>32%</span></div>
+                </div>
+              </div>
+              <div class="control-group">
+                <h4>Playoff path</h4>
+                <div class="slider-row">
+                  <label for="cmPlayoffSlider"><span class="label-copy">Playoff teams <span class="help-dot" tabindex="0" aria-label="Playoff teams help" data-tip="How many teams qualify for the title bracket. Bigger brackets create more upset paths and can punish the top seed.">?</span></span><span id="cmPlayoffValue">16</span></label>
+                  <input id="cmPlayoffSlider" type="range" min="2" max="24" value="16">
+                  <div class="slider-scale"><span>2 teams</span><span>24 teams</span></div>
+                </div>
+                <div class="select-row">
+                  <label for="cmSeriesSelect"><span class="label-copy">Playoff format <span class="help-dot" tabindex="0" aria-label="Playoff format help" data-tip="Single-game playoffs are more chaotic. Longer series make favorites more likely to advance.">?</span></span></label>
+                  <select id="cmSeriesSelect">
+                    <option value="1">Single game</option>
+                    <option value="3">Best-of-3</option>
+                    <option value="5">Best-of-5</option>
+                    <option value="7" selected>Best-of-7</option>
+                  </select>
+                </div>
+              </div>
             </div>
-            <div class="select-row">
-              <label for="cmSeriesSelect"><span class="label-copy">Playoff format <span class="help-dot" tabindex="0" aria-label="Playoff format help" data-tip="Single-game playoffs are more chaotic. Longer series make favorites more likely to advance.">?</span></span></label>
-              <select id="cmSeriesSelect">
-                <option value="1">Single game</option>
-                <option value="3">Best-of-3</option>
-                <option value="5">Best-of-5</option>
-                <option value="7" selected>Best-of-7</option>
-              </select>
-            </div>
+            <div class="control-subhead">League presets</div>
             <div class="preset-row" id="cmPresetRow"></div>
             <div class="commissioner-actions">
               <button class="btn primary" type="button" id="cmRunButton">Simulate era</button>
@@ -1885,6 +2283,23 @@
         </div>
 
         <div class="commissioner-card glass">
+          <div class="challenge-panel" style="--challenge-color:#ffe76b;">
+            <div>
+              <span class="section-kicker">Dynasty Draft Challenge</span>
+              <h3 id="cmChallengeTitle">Pick a mission</h3>
+              <p id="cmChallengeIntro">Tune the league rules to chase a grade. Scores use the expected model values above, not the example timeline.</p>
+            </div>
+            <div class="challenge-missions" id="cmChallengeMissions" role="tablist" aria-label="Dynasty Draft missions"></div>
+            <div class="challenge-score" id="cmChallengeScoreCard">
+              <div class="challenge-grade" id="cmChallengeGrade">D</div>
+              <div>
+                <strong id="cmChallengeScore">0</strong><small>/100</small>
+                <p id="cmChallengeSummary">Run an era to score the active mission.</p>
+              </div>
+            </div>
+            <div class="challenge-goals" id="cmChallengeGoals"></div>
+            <button class="btn" type="button" id="cmChallengeCopyButton">Copy challenge link</button>
+          </div>
           <div class="commissioner-output-grid">
             <div class="output-tile"><strong id="cmBestTitleRate">0%</strong><span>Expected top-seed title rate</span></div>
             <div class="output-tile"><strong id="cmMostTitles">0</strong><span>Expected max titles by one franchise</span></div>
@@ -1907,7 +2322,8 @@
       <div class="timeline-card timeline-feature match-card glass">
         <h3>Champion timeline</h3>
         <p id="cmTimelineCaption">Run the simulator to generate an era.</p>
-        <canvas id="cmTimelineCanvas" width="1180" height="620"></canvas>
+        <canvas id="cmTimelineCanvas" width="1280" height="700"></canvas>
+        <div class="timeline-list" id="cmTimelineList" aria-label="Mobile champion timeline summary"></div>
       </div>
     </section>
 
@@ -1919,6 +2335,7 @@
         </div>
         <p class="section-copy">Run 1,000 top-team-versus-average games. The more random the sport’s game unit is, the more often the favorite gets clipped.</p>
       </div>
+      <p class="tool-note"><strong>Teaches:</strong> even a strong favorite can look fragile when a sport’s single-game unit is noisy.</p>
 
       <div class="arena-layout">
         <div class="arena-card glass">
@@ -2090,7 +2507,8 @@
       chartMode: 'winPct',
       raceTimer: null,
       lastSim: [],
-      commissionerResult: null
+      commissionerResult: null,
+      activeChallenge: 'dynasty'
     };
 
     const franchiseNames = [
@@ -2104,6 +2522,57 @@
       'Coastal Current', 'Midtown Crown', 'Quartz City', 'Sunset Line', 'Frontier Forge'
     ];
 
+    const challengeDefinitions = {
+      dynasty: {
+        id: 'dynasty',
+        token: 'D',
+        title: 'Dynasty Maker',
+        color: '#ff6bd6',
+        copy: 'Build a league where one franchise can bend an era around itself.',
+        summary: 'Stack the format toward durable superteams and title conversion.',
+        starter: { teams: 30, games: 82, scoring: 100, star: 9, parity: 3, drawPercent: 0, playoffTeams: 8, series: 7, years: 50 },
+        goals: [
+          { label: 'Dynasty score', target: '40+', value: (inputs, expected) => expected.dynastyScore, display: v => `${Math.round(v)}/100`, score: (inputs, expected) => atLeast(expected.dynastyScore, 40, 18) },
+          { label: 'Max titles by one franchise', target: '10+', value: (inputs, expected) => expected.maxTitles, display: v => `${Math.round(v)} titles`, score: (inputs, expected) => atLeast(expected.maxTitles, 10, 4) },
+          { label: 'Longest title streak', target: '5+', value: (inputs, expected) => expected.longestStreak, display: v => `${Math.round(v)} straight`, score: (inputs, expected) => atLeast(expected.longestStreak, 5, 2) },
+          { label: 'Top-seed title rate', target: '55%+', value: (inputs, expected) => expected.topSeedTitleRate, display: v => pct(v, 0), score: (inputs, expected) => atLeast(expected.topSeedTitleRate, 0.55, 0.30) },
+          { label: 'Real league scale', target: '24+ teams, 50+ games, 8+ playoff teams', value: inputs => inputs, display: inputs => `${inputs.teams} teams / ${inputs.games} games / ${inputs.playoffTeams} in`, score: inputs => inputs.teams >= 24 && inputs.games >= 50 && inputs.playoffTeams >= 8 ? 1 : 0 }
+        ]
+      },
+      parity: {
+        id: 'parity',
+        token: 'P',
+        title: 'Parity Guardian',
+        color: '#61f3ff',
+        copy: 'Distribute titles while keeping the regular season worth watching.',
+        summary: 'Flatten dynasties without turning the table into pure noise.',
+        starter: { teams: 32, games: 82, scoring: 20, star: 4, parity: 9, drawPercent: 8, playoffTeams: 16, series: 3, years: 50 },
+        goals: [
+          { label: 'Dynasty score', target: '18 or lower', value: (inputs, expected) => expected.dynastyScore, display: v => `${Math.round(v)}/100`, score: (inputs, expected) => atMost(expected.dynastyScore, 18, 45) },
+          { label: 'Max titles by one franchise', target: '6 or lower', value: (inputs, expected) => expected.maxTitles, display: v => `${Math.round(v)} titles`, score: (inputs, expected) => atMost(expected.maxTitles, 6, 12) },
+          { label: 'Longest title streak', target: '3 or lower', value: (inputs, expected) => expected.longestStreak, display: v => `${Math.round(v)} straight`, score: (inputs, expected) => atMost(expected.longestStreak, 3, 8) },
+          { label: 'Top-seed title rate', target: '45% or lower', value: (inputs, expected) => expected.topSeedTitleRate, display: v => pct(v, 0), score: (inputs, expected) => atMost(expected.topSeedTitleRate, 0.45, 0.75) },
+          { label: 'Meaningful regular season', target: '62%+ best-team win rate', value: (inputs, expected) => expected.avgBestWinPct, display: v => pct(v, 0), score: (inputs, expected) => atLeast(expected.avgBestWinPct, 0.62, 0.50) }
+        ]
+      },
+      chaos: {
+        id: 'chaos',
+        token: 'C',
+        title: 'Chaos Cup',
+        color: '#ffe76b',
+        copy: 'Make a knockout universe where great teams sweat every round.',
+        summary: 'Expand upset paths until favorites stop feeling inevitable.',
+        starter: { teams: 24, games: 38, scoring: 3, star: 5, parity: 7, drawPercent: 22, playoffTeams: 16, series: 1, years: 50 },
+        goals: [
+          { label: 'Top-seed title rate', target: '35% or lower', value: (inputs, expected) => expected.topSeedTitleRate, display: v => pct(v, 0), score: (inputs, expected) => atMost(expected.topSeedTitleRate, 0.35, 0.70) },
+          { label: 'Playoff share', target: '50%+ of league', value: inputs => inputs.playoffTeams / inputs.teams, display: v => pct(v, 0), score: inputs => atLeast(inputs.playoffTeams / inputs.teams, 0.50, 0.20) },
+          { label: 'Single-game playoff', target: 'single game', value: inputs => inputs.series, display: v => v === 1 ? 'single game' : `best-of-${v}`, score: inputs => inputs.series === 1 ? 1 : 0 },
+          { label: 'Draw / non-win rate', target: '15%+', value: inputs => inputs.draw, display: v => pct(v, 0), score: inputs => atLeast(inputs.draw, 0.15, 0) },
+          { label: 'Dominant season', target: '78% or lower', value: (inputs, expected) => expected.dominantWinPct, display: v => pct(v, 0), score: (inputs, expected) => atMost(expected.dominantWinPct, 0.78, 0.92) }
+        ]
+      }
+    };
+
     const $ = (sel, root = document) => root.querySelector(sel);
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
     const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
@@ -2115,6 +2584,7 @@
       renderChart();
       renderPresets();
       renderCommissionerPresets();
+      renderChallengeMissions();
       renderExplainers();
       renderSources();
       renderRankStack();
@@ -2151,7 +2621,11 @@
       state.selected = league;
       document.documentElement.style.setProperty('--selected-color', league.color);
       $('#dashboard').style.setProperty('--selected-color', league.color);
-      $$('.league-card').forEach(btn => btn.classList.toggle('active', btn.dataset.league === league.id));
+      $$('.league-card').forEach(btn => {
+        const active = btn.dataset.league === league.id;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', String(active));
+      });
       $('#selectedSeason').textContent = `${league.name} • ${league.season}`;
       $('#selectedTeam').textContent = league.team;
       $('#selectedRecord').textContent = league.record;
@@ -2190,7 +2664,11 @@
           <div class="bar-value">${pct(chartValue(l))}</div>
         </div>
       `).join('');
-      $$('.segmented button').forEach(b => b.classList.toggle('active', b.dataset.chartMode === state.chartMode));
+      $$('.segmented button').forEach(b => {
+        const active = b.dataset.chartMode === state.chartMode;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-selected', String(active));
+      });
     }
 
     function renderMetrics(l) {
@@ -2398,6 +2876,39 @@
       }));
     }
 
+    function renderChallengeMissions() {
+      $('#cmChallengeMissions').innerHTML = Object.values(challengeDefinitions).map(challenge => `
+        <div class="challenge-card${challenge.id === state.activeChallenge ? ' active' : ''}" style="--challenge-color:${challenge.color};" data-challenge-card="${challenge.id}">
+          <div class="challenge-card-title">
+            <strong>${challenge.title}</strong>
+            <span aria-hidden="true">${challenge.token}</span>
+          </div>
+          <p>${challenge.copy}</p>
+          <div class="challenge-card-actions">
+            <button class="challenge-action" type="button" role="tab" aria-selected="${challenge.id === state.activeChallenge}" data-challenge-select="${challenge.id}">${challenge.id === state.activeChallenge ? 'Selected' : 'Select'}</button>
+            <button class="challenge-action" type="button" data-challenge-starter="${challenge.id}">Load starter build</button>
+          </div>
+        </div>
+      `).join('');
+      $$('[data-challenge-select]').forEach(btn => btn.addEventListener('click', () => selectChallenge(btn.dataset.challengeSelect)));
+      $$('[data-challenge-starter]').forEach(btn => btn.addEventListener('click', () => loadChallengeStarter(btn.dataset.challengeStarter)));
+      updateChallengeTheme();
+    }
+
+    function selectChallenge(id) {
+      state.activeChallenge = normalizeChallengeId(id);
+      renderChallengeMissions();
+      if (state.commissionerResult) renderChallengeResult(state.commissionerResult);
+    }
+
+    function loadChallengeStarter(id) {
+      state.activeChallenge = normalizeChallengeId(id);
+      const challenge = challengeDefinitions[state.activeChallenge];
+      setCommissionerInputs(challenge.starter);
+      renderChallengeMissions();
+      runCommissioner(true);
+    }
+
     function setCommissionerInputs(inputs) {
       const drawPercent = inputs.drawPercent ?? (inputs.draw != null ? inputs.draw * 100 : 0);
       $('#cmTeamSlider').value = clamp(Math.round(inputs.teams ?? 30), 8, 40);
@@ -2450,6 +2961,10 @@
     function hydrateCommissionerFromUrl() {
       const params = new URLSearchParams(window.location.search);
       if (params.get('cm') !== '1') return false;
+      if (params.has('ch')) {
+        state.activeChallenge = normalizeChallengeId(params.get('ch'));
+        renderChallengeMissions();
+      }
       const num = (key, fallback) => {
         const value = Number(params.get(key));
         return Number.isFinite(value) ? value : fallback;
@@ -2706,6 +3221,78 @@
       return value;
     }
 
+    function normalizeChallengeId(id) {
+      return challengeDefinitions[id] ? id : 'dynasty';
+    }
+
+    function atLeast(value, target, start) {
+      return clamp((value - start) / (target - start), 0, 1);
+    }
+
+    function atMost(value, target, start) {
+      return clamp((start - value) / (start - target), 0, 1);
+    }
+
+    function challengeGradeForScore(score) {
+      if (score >= 90) return 'S';
+      if (score >= 75) return 'A';
+      if (score >= 60) return 'B';
+      if (score >= 40) return 'C';
+      return 'D';
+    }
+
+    function scoreDynastyChallenge(inputs, expected, id = state.activeChallenge) {
+      const challenge = challengeDefinitions[normalizeChallengeId(id)];
+      const goals = challenge.goals.map(goal => {
+        const value = goal.value(inputs, expected);
+        const progress = clamp(Number(goal.score(inputs, expected)), 0, 1);
+        return {
+          label: goal.label,
+          target: goal.target,
+          value: goal.display(value),
+          progress,
+          points: progress * 20
+        };
+      });
+      const score = Math.round(goals.reduce((sum, goal) => sum + goal.points, 0));
+      return {
+        id: challenge.id,
+        title: challenge.title,
+        color: challenge.color,
+        summary: challenge.summary,
+        score,
+        grade: challengeGradeForScore(score),
+        goals
+      };
+    }
+
+    function updateChallengeTheme() {
+      const challenge = challengeDefinitions[normalizeChallengeId(state.activeChallenge)];
+      $$('.challenge-panel, .active-challenge-strip').forEach(el => el.style.setProperty('--challenge-color', challenge.color));
+      $('#cmChallengeTitle').textContent = challenge.title;
+      $('#cmChallengeIntro').textContent = challenge.summary;
+      $('#cmActiveChallengeName').textContent = challenge.title;
+    }
+
+    function renderChallengeResult(result) {
+      const assessment = scoreDynastyChallenge(result.inputs, result.expected, state.activeChallenge);
+      updateChallengeTheme();
+      $('#cmChallengeGrade').textContent = assessment.grade;
+      $('#cmChallengeScore').textContent = assessment.score.toLocaleString();
+      $('#cmChallengeSummary').textContent = `${assessment.title}: ${assessment.grade} grade. ${assessment.summary}`;
+      $('#cmActiveChallengeGrade').textContent = assessment.grade;
+      $('#cmActiveChallengeScore').textContent = `${assessment.score.toLocaleString()}/100 challenge score`;
+      $('#cmChallengeGoals').innerHTML = assessment.goals.map(goal => `
+        <div class="challenge-goal">
+          <div><strong>${goal.label}</strong><span>Target: ${goal.target}</span></div>
+          <span>${goal.value}</span>
+          <div class="challenge-progress" aria-label="${goal.label} progress ${Math.round(goal.progress * 100)}%">
+            <div style="width:${(goal.progress * 100).toFixed(1)}%"></div>
+          </div>
+        </div>
+      `).join('');
+    }
+
     function renderCommissionerResult(result) {
       const expected = result.expected;
       $('#cmBestTitleRate').textContent = pct(expected.topSeedTitleRate, 0);
@@ -2717,6 +3304,8 @@
       $('#cmFingerprintTitle').textContent = `Expected: ${pct(expected.avgBestWinPct, 0)} regular-season dominance converts into ${pct(expected.topSeedTitleRate, 0)} top-seed title rate.`;
       $('#cmFingerprintCopy').textContent = `Example era: ${result.topStats[0].team.name} won ${result.topStats[0].titles} titles. The strongest example season was ${result.dominant.team.name} in Year ${result.dominant.season}: ${result.dominant.record}, ${pct(result.dominant.winPct)}. Expected score ${Math.round(expected.dynastyScore)}/100 means ${dynastyTone(expected.dynastyScore)}.`;
       renderFranchiseBoard(result);
+      renderChallengeResult(result);
+      renderChampionTimelineList(result);
       drawChampionTimeline(result);
     }
 
@@ -2745,31 +3334,58 @@
       const lanes = topStats.map(s => ({ id: s.team.id, name: s.team.name, color: s.team.color, titles: s.titles }));
       if (otherTitles > 0) lanes.push({ id: 'other', name: 'Other teams', color: '#aab2d6', titles: otherTitles });
 
-      const left = 206;
-      const right = 46;
-      const top = 118;
-      const rowH = 54;
-      const rowGap = 22;
+      const labelLeft = 42;
+      const labelSwatchX = 42;
+      const labelTextX = 86;
+      const left = 300;
+      const right = 68;
+      const top = 126;
+      const rowH = 58;
+      const rowGap = 18;
       const innerW = w - left - right;
       const years = result.seasons.length;
-      const markW = clamp(innerW / years * 0.82, 7, 18);
+      const laneCount = Math.max(1, lanes.length);
+      const laneBottom = top + laneCount * rowH + (laneCount - 1) * rowGap;
+      const axisY = Math.min(h - 94, laneBottom + 42);
+      const legendY = Math.min(h - 36, axisY + 54);
+      const labelMaxW = left - labelTextX - 18;
+      const markW = clamp(innerW / years * 0.72, 7, 16);
       const xForSeason = (season) => left + ((season - 1) / Math.max(1, years - 1)) * innerW;
+      const drawFittedText = (text, x, y, maxWidth, size, minSize, weight, color) => {
+        let fontSize = size;
+        ctx.fillStyle = color;
+        ctx.font = `${weight} ${fontSize}px Inter, system-ui, sans-serif`;
+        while (fontSize > minSize && ctx.measureText(text).width > maxWidth) {
+          fontSize -= 1;
+          ctx.font = `${weight} ${fontSize}px Inter, system-ui, sans-serif`;
+        }
+        let output = text;
+        if (ctx.measureText(output).width > maxWidth) {
+          while (output.length > 4 && ctx.measureText(`${output}...`).width > maxWidth) {
+            output = output.slice(0, -1);
+          }
+          output = `${output}...`;
+        }
+        ctx.fillText(output, x, y);
+      };
 
       ctx.fillStyle = '#fff';
-      ctx.font = '950 34px Inter, system-ui, sans-serif';
-      ctx.fillText('Dynasty lanes', 36, 48);
+      ctx.font = '950 36px Inter, system-ui, sans-serif';
+      ctx.fillText('Dynasty lanes', labelLeft, 54);
       ctx.fillStyle = 'rgba(170,178,214,0.88)';
       ctx.font = '800 18px Inter, system-ui, sans-serif';
-      ctx.fillText('Each mark is one championship. White outlines mean the regular-season leader also won the title.', 36, 78);
+      ctx.fillText('Each mark is one championship. White outlines mean the regular-season leader also won the title.', labelLeft, 88);
 
       for (let i = 0; i <= 4; i++) {
         const x = left + i * innerW / 4;
         ctx.strokeStyle = 'rgba(255,255,255,0.10)';
-        ctx.beginPath(); ctx.moveTo(x, top - 18); ctx.lineTo(x, h - 86); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(x, top - 18); ctx.lineTo(x, laneBottom); ctx.stroke();
         ctx.fillStyle = 'rgba(170,178,214,0.88)';
         ctx.font = '850 17px Inter, system-ui, sans-serif';
-        ctx.fillText(`Year ${Math.round(1 + i * (years - 1) / 4)}`, x - 24, h - 52);
+        ctx.textAlign = 'center';
+        ctx.fillText(`Year ${Math.round(1 + i * (years - 1) / 4)}`, x, axisY);
       }
+      ctx.textAlign = 'left';
 
       lanes.forEach((lane, i) => {
         const y = top + i * (rowH + rowGap);
@@ -2778,13 +3394,11 @@
         ctx.strokeStyle = 'rgba(255,255,255,0.08)';
         roundedRect(ctx, left, y, innerW, rowH, 16); ctx.stroke();
         ctx.fillStyle = lane.color;
-        roundedRect(ctx, 36, y + 12, 28, 28, 9); ctx.fill();
-        ctx.fillStyle = '#fff';
-        ctx.font = '900 20px Inter, system-ui, sans-serif';
-        ctx.fillText(lane.name, 76, y + 22);
+        roundedRect(ctx, labelSwatchX, y + 14, 30, 30, 9); ctx.fill();
+        drawFittedText(lane.name, labelTextX, y + 26, labelMaxW, 20, 15, 900, '#fff');
         ctx.fillStyle = 'rgba(170,178,214,0.92)';
         ctx.font = '800 15px Inter, system-ui, sans-serif';
-        ctx.fillText(`${lane.titles} titles`, 76, y + 43);
+        ctx.fillText(`${lane.titles} titles`, labelTextX, y + 48);
       });
 
       const laneById = new Map(lanes.map((lane, i) => [lane.id, i]));
@@ -2792,23 +3406,23 @@
         const laneIndex = laneById.has(season.champion.id) ? laneById.get(season.champion.id) : laneById.get('other');
         if (laneIndex == null) return;
         const lane = lanes[laneIndex];
-        const x = xForSeason(season.season) - markW / 2;
-        const y = top + laneIndex * (rowH + rowGap) + 8;
+        const x = clamp(xForSeason(season.season) - markW / 2, left + 4, left + innerW - markW - 4);
+        const y = top + laneIndex * (rowH + rowGap) + 9;
         ctx.globalAlpha = season.champion.id === season.bestTeam.id ? 0.98 : 0.72;
         ctx.fillStyle = lane.color;
-        roundedRect(ctx, x, y, markW, rowH - 16, Math.min(9, markW / 2)); ctx.fill();
+        roundedRect(ctx, x, y, markW, rowH - 18, Math.min(9, markW / 2)); ctx.fill();
         if (season.champion.id === season.bestTeam.id) {
           ctx.globalAlpha = 1;
           ctx.strokeStyle = 'rgba(255,255,255,0.95)';
           ctx.lineWidth = 3;
-          roundedRect(ctx, x - 2, y - 2, markW + 4, rowH - 12, Math.min(10, markW / 2 + 2)); ctx.stroke();
+          roundedRect(ctx, x - 2, y - 2, markW + 4, rowH - 14, Math.min(10, markW / 2 + 2)); ctx.stroke();
           ctx.lineWidth = 1;
         }
       });
       ctx.globalAlpha = 1;
 
-      const conversionX = 36;
-      const conversionY = h - 34;
+      const conversionX = labelLeft;
+      const conversionY = legendY;
       ctx.fillStyle = 'rgba(255,255,255,0.10)';
       roundedRect(ctx, conversionX, conversionY - 28, 24, 24, 7); ctx.fill();
       ctx.strokeStyle = 'rgba(255,255,255,0.95)';
@@ -2820,9 +3434,40 @@
       ctx.fillText(`${pct(result.bestTeamTitleRate, 0)} top-seed conversion`, conversionX + 42, conversionY - 10);
     }
 
-    function commissionerShareUrl() {
-      const inputs = commissionerInputs();
-      const url = new URL(window.location.href);
+    function renderChampionTimelineList(result) {
+      const seasonsByTeam = new Map();
+      result.seasons.forEach(season => {
+        if (!seasonsByTeam.has(season.champion.id)) seasonsByTeam.set(season.champion.id, []);
+        seasonsByTeam.get(season.champion.id).push(season.season);
+      });
+      const rows = result.topStats.slice(0, 7).map(stat => {
+        const years = seasonsByTeam.get(stat.team.id) || [];
+        const first = years[0] || '-';
+        const last = years[years.length - 1] || '-';
+        return `
+          <div class="timeline-list-row">
+            <div>
+              <strong>${stat.team.name}</strong>
+              <span>${stat.bestSeasons} top seeds · title years ${first}-${last}</span>
+            </div>
+            <div class="timeline-list-count" style="--team-color:${stat.team.color};">${stat.titles}</div>
+          </div>
+        `;
+      });
+      rows.push(`
+        <div class="timeline-list-row">
+          <div>
+            <strong>Top-seed conversion</strong>
+            <span>How often the regular-season leader also won the title in this example era.</span>
+          </div>
+          <div class="timeline-list-count" style="--team-color:#ffffff;">${pct(result.bestTeamTitleRate, 0)}</div>
+        </div>
+      `);
+      $('#cmTimelineList').innerHTML = rows.join('');
+    }
+
+    function commissionerShareUrlForInputs(inputs, challengeId = null, href = window.location.href) {
+      const url = new URL(href);
       url.searchParams.set('cm', '1');
       url.searchParams.set('tm', inputs.teams);
       url.searchParams.set('gm', inputs.games);
@@ -2833,16 +3478,21 @@
       url.searchParams.set('pt', inputs.playoffTeams);
       url.searchParams.set('bo', inputs.series);
       url.searchParams.set('yr', inputs.years);
+      if (challengeId) url.searchParams.set('ch', normalizeChallengeId(challengeId));
+      else url.searchParams.delete('ch');
       url.hash = 'commissioner';
       return url.toString();
     }
 
-    async function copyCommissionerLink() {
-      const url = commissionerShareUrl();
+    function commissionerShareUrl(options = {}) {
+      return commissionerShareUrlForInputs(commissionerInputs(), options.challenge || null);
+    }
+
+    async function copyTextWithFallback(textToCopy) {
       let copied = false;
       try {
         if (navigator.clipboard) {
-          await navigator.clipboard.writeText(url);
+          await navigator.clipboard.writeText(textToCopy);
           copied = true;
         }
       } catch {
@@ -2850,7 +3500,7 @@
       }
       if (!copied) {
         const text = document.createElement('textarea');
-        text.value = url;
+        text.value = textToCopy;
         text.setAttribute('readonly', '');
         text.style.position = 'fixed';
         text.style.left = '-9999px';
@@ -2860,7 +3510,20 @@
         catch { copied = false; }
         text.remove();
       }
+      return copied;
+    }
+
+    async function copyCommissionerLink() {
+      const url = commissionerShareUrl();
+      const copied = await copyTextWithFallback(url);
       $('#cmCopyStatus').textContent = copied ? 'League link copied. Random outcomes will reroll, but the settings are preserved.' : `Copy failed. Share this URL: ${url}`;
+    }
+
+    async function copyChallengeLink() {
+      const url = commissionerShareUrl({ challenge: state.activeChallenge });
+      const copied = await copyTextWithFallback(url);
+      const challenge = challengeDefinitions[normalizeChallengeId(state.activeChallenge)];
+      $('#cmCopyStatus').textContent = copied ? `${challenge.title} challenge link copied.` : `Copy failed. Share this URL: ${url}`;
     }
 
     function showControlTooltip(dot) {
@@ -3226,6 +3889,7 @@
       $('#cmSeriesSelect').addEventListener('change', () => runCommissioner(false));
       $('#cmRunButton').addEventListener('click', () => runCommissioner(true));
       $('#cmCopyButton').addEventListener('click', copyCommissionerLink);
+      $('#cmChallengeCopyButton').addEventListener('click', copyChallengeLink);
     }
 
     function runRaceMode() {
